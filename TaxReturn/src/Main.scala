@@ -1,5 +1,7 @@
 
 
 object Main {
-  // ddf d
+ def main(args: Array[String]) {
+  println("dd")
+  }
 }
