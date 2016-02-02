@@ -11,5 +11,7 @@ object Main {
    println(FederalTax.interestCalDaily(3300, interestDays))
   println(interestDays)
   
+  val x: form1040 = new form1040()
+   
   }
 }

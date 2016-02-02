@@ -1,7 +1,6 @@
 
 //import java.util._
 import org.joda.time._
-package scala
 object TaxRules {
 
   /*
