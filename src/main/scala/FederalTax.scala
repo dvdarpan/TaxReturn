@@ -17,26 +17,25 @@ trait rule {
 }
 class property[T <: Any] extends rule {
   var value: T
+  val name:String
 }
 
-class propertyList(size: Int) extends property[HashMap[property[Any], Int]] {
-  id = ""
-  description = ""
-  value = new HashMap[property[Any], Int]()
-  val x= new property[String]()
+class propertyList extends property[HashMap[Int,property[Any]]] {
   
-value.put(x,23)
-  
-//  val put = (p: property[Any], i: Int) => { value(i) = p }
+ // id = ""
+ // description = ""
+  //val x = new property[Any]("line1")
+  //value + (x -> 1)
+
+  //  val put = (p: property[Any], i: Int) => { value(i) = p }
 }
 
 class form1040 {
+
+  var lines: propertyList 
+  for (x:Int <-(1 to 79)) lines.value= lines.value + (x -> new property[Any])
   
-  var lines: propertyList = new propertyList(79)
-  for ((line, i) <- lines.value.zipWithIndex) {
-    line.id = "line" + i
-    lines.put(line, i)
-  }
-  lines.value.foreach(line => println(line.id))
+  
+ // lines.value.foreach(line => println(line.id))
 
 }
