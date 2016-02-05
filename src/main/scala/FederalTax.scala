@@ -15,15 +15,14 @@ trait rule {
   var description: String
 
 }
-class property[T <: Any] extends rule {
+class property[T <: Any](name:String) extends rule {
   var value: T
-  val name:String
 }
 
-class propertyList extends property[HashMap[Int,property[Any]]] {
+class propertyList(name:String) extends property[ HashMap[Int,property[Any]]](name) {
   
- // id = ""
- // description = ""
+  id = name
+  description = name
   //val x = new property[Any]("line1")
   //value + (x -> 1)
 
@@ -32,8 +31,8 @@ class propertyList extends property[HashMap[Int,property[Any]]] {
 
 class form1040 {
 
-  var lines: propertyList 
-  for (x:Int <-(1 to 79)) lines.value= lines.value + (x -> new property[Any])
+  val lines: propertyList = new propertyList("prop")
+  for (x:Int <-(1 to 79)) lines.value= lines.value + (x -> new property[Any]("line"+x))
   
   
  // lines.value.foreach(line => println(line.id))
